@@ -511,17 +511,25 @@ const App = {
   },
 
   startCount(){
-    const end = Date.now() + 7*24*60*60*1000;
+    if (this._cdTimer){ clearInterval(this._cdTimer); this._cdTimer = null; }
+    // Persist the end time so a refresh doesn't reset the countdown
+    let end = parseInt(Store.get("cdEnd",""), 10) || 0;
+    if (!end || end < Date.now()){
+      end = Date.now() + 7*24*60*60*1000;
+      Store.set("cdEnd", String(end));
+    }
     const pad = n => String(n).padStart(2,"0");
     const tick = () => {
       let d = end - Date.now(); if(d<0) d=0;
       const dd=Math.floor(d/864e5), hh=Math.floor(d%864e5/36e5), mm=Math.floor(d%36e5/6e4), ss=Math.floor(d%6e4/1e3);
-      const D=$("#cd-d"),H=$("#cd-h"),M=$("#cd-m"),S=$("#cd-s");
+      const D=document.getElementById("cd-d"),H=document.getElementById("cd-h"),M=document.getElementById("cd-m"),S=document.getElementById("cd-s");
       if(D)D.textContent=pad(dd); if(H)H.textContent=pad(hh); if(M)M.textContent=pad(mm); if(S)S.textContent=pad(ss);
-      const days = Math.max(1, Math.ceil(d/864e5));
-      const C=$("#contestDays"); if(C) C.textContent = days + (days===1?" day":" days") + " to go";
+      const C=document.getElementById("contestDays");
+      const days = Math.max(0, Math.ceil(d/864e5));
+      if(C) C.textContent = days + (days===1?" day":" days") + " to go";
     };
-    tick(); setInterval(tick, 1000);
+    tick();
+    this._cdTimer = setInterval(tick, 1000);
   },
 
   challengeCard(c, i){
