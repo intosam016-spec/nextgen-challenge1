@@ -504,7 +504,7 @@ const App = {
               <a class="btn btn-primary btn-lg" href="https://x.com/G_NEXTGEN/status/2077689871049560431" target="_blank" rel="noopener">${ico("flame",16)} Retweet campaign</a>
               <a class="btn btn-secondary btn-lg" href="https://agent.creao.ai/@Sonofpeace" target="_blank" rel="noopener">${ico("link",16)} Share CREAO link</a>
             </div>
-            <p class="contest-foot">Runs Jul 11 – 25 · Winners announced day 14 · Leaderboard updates days 3, 6, 9, 12 · Friends get up to 50–75 free credits</p>
+            <p class="contest-foot">Runs Aug 15 – 29 · Winners announced day 14 · Leaderboard updates days 3, 6, 9, 12 · Friends get up to 50–75 free credits</p>
           </div>
         </div>
       </section>`;
@@ -512,12 +512,8 @@ const App = {
 
   startCount(){
     if (this._cdTimer){ clearInterval(this._cdTimer); this._cdTimer = null; }
-    // Persist the end time so a refresh doesn't reset the countdown
-    let end = parseInt(Store.get("cdEnd",""), 10) || 0;
-    if (!end || end < Date.now()){
-      end = Date.now() + 7*24*60*60*1000;
-      Store.set("cdEnd", String(end));
-    }
+    // Real contest deadline — fixed date so it counts down like a real event
+    const end = Date.UTC(2026, 7, 29, 23, 59, 59); // Aug 29, 2026 23:59 UTC
     const pad = n => String(n).padStart(2,"0");
     const tick = () => {
       let d = end - Date.now(); if(d<0) d=0;
