@@ -467,6 +467,7 @@ select.input option { background: var(--surface-2); }
   .grid-3, .grid-2 { grid-template-columns: 1fr; }
   .section { padding: 56px 0; }
   .footer-inner { grid-template-columns: 1fr; gap: 26px; }
+  .footer { padding-bottom: 84px; }
   .profile-stats, .admin-grid { grid-template-columns: 1fr 1fr; }
   .hero { padding: 48px 0 30px; }
   .toast-wrap { left: 20px; right: 20px; }
