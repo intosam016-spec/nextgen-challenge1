@@ -499,18 +499,19 @@ select.input option { background: var(--surface-2); }
 .contest-grid .box { padding:22px; }
 .contest-grid h3 { margin-bottom:14px; }
 .prize-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
-.prize-list li { display:flex; align-items:center; gap:12px; font-size:14px; color:var(--text-2); }
-.prize-list li em { margin-left:auto; color:var(--accent); font-style:normal; font-weight:600; font-size:12px; white-space:nowrap; }
+.prize-list li { display:flex; align-items:center; gap:12px; font-size:14px; color:var(--text-2); flex-wrap:wrap; }
+.prize-list li > span:nth-child(2) { flex:1 1 auto; min-width:0; }
+.prize-list li em { margin-left:auto; color:var(--accent); font-style:normal; font-weight:600; font-size:12px; flex:none; }
 .prize-list li.others { color:var(--muted); }
 .prize-medal { width:26px; height:26px; border-radius:8px; display:grid; place-items:center; font-weight:800; font-size:13px; flex:none;
   background: linear-gradient(135deg,#f59e0b,#ffd166); color:#1a1205; }
 .prize-list li:nth-child(2) .prize-medal { background:linear-gradient(135deg,#cbd5e1,#e2e8f0); color:#0f172a; }
 .prize-list li:nth-child(3) .prize-medal { background:linear-gradient(135deg,#d97706,#b45309); color:#fff; }
 .steps { list-style:none; counter-reset:st; display:flex; flex-direction:column; gap:12px; }
-.steps li { counter-increment:st; display:flex; gap:12px; font-size:14px; color:var(--text-2); position:relative; padding-left:34px; }
+.steps li { counter-increment:st; display:flex; flex-wrap:wrap; gap:6px 12px; font-size:14px; color:var(--text-2); position:relative; padding-left:34px; }
 .steps li::before { content:counter(st); position:absolute; left:0; top:0; width:22px; height:22px; border-radius:50%;
   background:var(--grad); color:#fff; font-size:12px; font-weight:700; display:grid; place-items:center; }
-.steps code { color:var(--accent); background:rgba(255,79,216,.08); padding:1px 6px; border-radius:6px; }
+.steps code { color:var(--accent); background:rgba(255,79,216,.08); padding:3px 8px; border-radius:6px; display:inline-block; max-width:100%; overflow-wrap:anywhere; white-space:normal; }
 .note { margin-top:14px; font-size:12.5px; color:var(--muted); }
 .contest-cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; position:relative; }
 .contest-foot { margin-top:18px; font-size:12px; color:var(--muted); position:relative; }

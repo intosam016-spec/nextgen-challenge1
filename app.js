@@ -493,7 +493,7 @@ const App = {
                 <h3>${ico("rocket",18)} How to enter</h3>
                 <ol class="steps">
                   <li>Retweet the campaign post</li>
-                  <li>Share this CREAO link with friends: <code>agent.creao.ai/@Sonofpeace</code></li>
+                  <li>Share this CREAO link with friends: <code>agent.creao.ai/<wbr>@Sonofpeace</code></li>
                   <li>Your friend signs up through that link and builds an agent by chatting with CREAO AI</li>
                   <li>Screenshot the friend's profile and submit it in the contest channel</li>
                 </ol>
