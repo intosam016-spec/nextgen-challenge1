@@ -407,11 +407,7 @@ const App = {
                       <div class="mc-top"><b>${esc(feat.title)}</b><span class="chip cat">${esc(feat.category)}</span></div>
                       <div class="mc-row"><span>${ico("users",14)} ${fmt(feat.participants)}</span><span>${ico("clock",14)} ${feat.deadline}d</span><span>${ico("bolt",14)} ${feat.reward} XP</span></div>
                     </div>
-                    <div class="mini-list">
-                      <div class="row"><span class="rank g1">1</span><span class="av">A</span> Amara N.<span class="sp">${ico("bolt",13)} 4,820</span></div>
-                      <div class="row"><span class="rank g2">2</span><span class="av" style="background:linear-gradient(135deg,#ec4899,#f59e0b)">M</span> Maya Chen<span class="sp">${ico("bolt",13)} 4,100</span></div>
-                      <div class="row"><span class="rank g3">3</span><span class="av" style="background:linear-gradient(135deg,#22d3ee,#8b5cf6)">T</span> Tunde Okafor<span class="sp">${ico("bolt",13)} 3,980</span></div>
-                    </div>
+                    <div class="mini-list">${this.miniRows(3)}</div>
                     <div class="prog" style="margin-top:6px"><span style="width:68%"></span></div>
                   </div>
                 </div>
@@ -441,6 +437,14 @@ const App = {
     `;
   },
 
+  miniRows(n){
+    const top = this.users().filter(u=>u.xp).sort((a,b)=>b.xp-a.xp).slice(0,n);
+    return top.map((u,i)=>{
+      const r=i+1;
+      return `<div class="row"><span class="rank ${r<=3?"g"+r:"plain"}">${r}</span>${avatarHTML(u,"av")}<span style="white-space:nowrap">${esc(u.name)}</span><span class="sp">${ico("bolt",13)} ${fmt(u.xp)}</span></div>`;
+    }).join("");
+  },
+
   heroPanel(){
     return `
       <div class="panel reveal">
@@ -450,13 +454,7 @@ const App = {
             <div class="mc-top"><b>${ico("bolt",15)} XP Leaderboard</b><span class="chip badge-ending">Live</span></div>
             <div class="mc-row"><span>This week</span><span style="margin-left:auto;color:var(--text-2)">Updated now</span></div>
           </div>
-          <div class="mini-list">
-            <div class="row"><span class="rank g1">1</span><span class="av">A</span> Amara R.<span class="sp">${ico("bolt",13)} 4,820</span></div>
-            <div class="row"><span class="rank g2">2</span><span class="av" style="background:linear-gradient(135deg,#ec4899,#f59e0b)">M</span> Maya Chen<span class="sp">${ico("bolt",13)} 4,100</span></div>
-            <div class="row"><span class="rank g3">3</span><span class="av" style="background:linear-gradient(135deg,#22d3ee,#8b5cf6)">T</span> Tunde Okafor<span class="sp">${ico("bolt",13)} 3,980</span></div>
-            <div class="row"><span class="rank plain">4</span><span class="av" style="background:linear-gradient(135deg,#6366f1,#22d3ee)">L</span> Lena K.<span class="sp">${ico("bolt",13)} 3,520</span></div>
-            <div class="row"><span class="rank plain">5</span><span class="av" style="background:linear-gradient(135deg,#f43f5e,#8b5cf6)">S</span> Sam Torres<span class="sp">${ico("bolt",13)} 3,210</span></div>
-          </div>
+          <div class="mini-list">${this.miniRows(5)}</div>
           <div class="prog" style="margin-top:6px"><span style="width:68%"></span></div>
           <p style="color:var(--muted);font-size:11.5px;margin-top:8px">Join, build, and climb the board — unlock badges along the way.</p>
         </div>
