@@ -256,6 +256,7 @@ h4 { font-size: 16px; }
 .ico-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .ico-row a { width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; background: rgba(255,255,255,.04); border: 1px solid var(--border); transition: .15s; color: var(--muted); }
 .ico-row a:hover { background: var(--brand); color: #fff; transform: translateY(-2px); }
+.footer .ico-row a { display: grid; place-items: center; }
 .ico-row svg { width: 18px; height: 18px; }
 
 /* ---------- Footer ---------- */
