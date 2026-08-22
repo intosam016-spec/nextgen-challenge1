@@ -261,7 +261,7 @@ h4 { font-size: 16px; }
 
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--border); background: var(--bg-deep); margin-top: 40px; }
-.footer-inner { padding: 56px 0 28px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer-inner { padding: 56px 24px 28px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
 .footer h4 { font-size: 13px; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted-2); }
 .footer a { display: block; color: var(--muted); font-size: 14px; padding: 4px 0; transition: color .15s; }
 .footer a:hover { color: var(--text); }
@@ -475,7 +475,7 @@ select.input option { background: var(--surface-2); }
   .featured { padding: 24px 18px; }
   .panel { display: none; }
 }
-@media (min-width: 721px) { .container { padding: 0 32px; } }
+@media (min-width: 721px) { .container { padding: 0 32px; } .footer-inner { padding: 56px 32px 28px; } }
 
 /* ---------- Live Contest ---------- */
 .contest-card {
