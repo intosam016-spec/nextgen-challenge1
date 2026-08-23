@@ -369,6 +369,12 @@ const App = {
         </div>
       </section>
 
+      <div class="marquee reveal" aria-hidden="true">
+        <div class="marquee-track">
+          ${Array(4).fill("AI ✦ Web3 ✦ Design ✦ Automation ✦ Creative ✦ Tech ✦ Content ✦").join(" ")}
+        </div>
+      </div>
+
       ${this.contestSection()}
 
       <section class="section">
