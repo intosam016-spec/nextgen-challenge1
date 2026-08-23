@@ -323,6 +323,20 @@ h4 { font-size: 16px; }
 .filters .filter { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); font-weight: 500; font-size: 13.5px; transition: .15s; }
 .filters .filter:hover { color: var(--text); border-color: var(--border-2); }
 .filters .filter.active { background: var(--brand); color: #fff; border-color: transparent; }
+
+/* Challenge arena — toolbar + search + sort */
+.chal-hero { padding: 52px 0 26px; position: relative; }
+.chal-hero h1 { font-size: clamp(34px,5vw,54px); }
+.chal-hero .sub { max-width: 620px; }
+.chal-toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 28px; }
+.chal-toolbar .search { flex: 1 1 260px; display: flex; align-items: center; gap: 9px; padding: 0 14px; height: 44px; border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--border); color: var(--muted); transition: border-color .15s, box-shadow .15s; }
+.chal-toolbar .search:focus-within { border-color: rgba(124,92,246,.5); box-shadow: 0 0 0 3px rgba(124,92,246,.15); }
+.chal-toolbar .search svg { width: 16px; height: 16px; }
+.chal-toolbar .search input { flex: 1; background: transparent; border: 0; outline: 0; color: var(--text); font-size: 14px; }
+.chal-toolbar .search input::placeholder { color: var(--muted-2); }
+.chal-toolbar .sort { height: 44px; padding: 0 34px 0 14px; border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--border); color: var(--text-2); font-size: 13.5px; font-family: var(--font); cursor: pointer; }
+.chal-toolbar .sort:hover { border-color: var(--border-2); }
+.chal-count { align-self: center; font-size: 12.5px; font-weight: 700; color: var(--brand-soft); padding: 6px 12px; border-radius: 999px; background: rgba(124,92,246,.12); border: 1px solid rgba(124,92,246,.28); white-space: nowrap; }
 .seg { display: inline-flex; gap: 4px; background: var(--surface); border: 1px solid var(--border); padding: 3px; border-radius: 9px; }
 .seg button { background: none; border: 0; padding: 7px 14px; border-radius: 7px; color: var(--muted); font-weight: 600; font-size: 13.5px; }
 .seg button.active { background: var(--brand); color: #fff; }

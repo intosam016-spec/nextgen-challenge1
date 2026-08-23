@@ -154,7 +154,7 @@ const App = {
     if (path === "/signup") return el.innerHTML = this.authView("signup");
     if (path === "/forgot") return el.innerHTML = this.forgotView("forgot");
     if (path === "/reset") return el.innerHTML = this.forgotView("reset");
-    if (path === "/challenges") return el.innerHTML = this.challengesView(p);
+    if (path === "/challenges"){ el.innerHTML = this.challengesView(p); this.drawGrid(); return; }
     if (path === "/challenge"){ const c = DB.challenges.find(x=>x.id===p.id); return el.innerHTML = c ? this.challengeDetail(c) : this.notFound(); }
     if (path === "/submit"){ const c = DB.challenges.find(x=>x.id===p.id); if(!c) return el.innerHTML=this.notFound(); if(!this.session()){ this.toast("Log in required", "Please log in to submit your project.", "err"); return el.innerHTML=this.authView("login"); } return el.innerHTML = this.submitView(c); }
     if (path === "/leaderboard") return el.innerHTML = this.leaderboardView(p);
@@ -598,25 +598,60 @@ const App = {
   challengesView(p){
     const cats = ["All","AI","Web Development","Automation","Design","Web3","Content Creation"];
     const diffs = ["All","Beginner","Intermediate","Advanced"];
-    let list = DB.challenges;
+    const stLabel = { open:"Open", ending:"Ending soon", completed:"Completed" };
+
+    let list = DB.challenges.slice();
     if (p.cat && p.cat!=="All") list = list.filter(c=>c.category===p.cat);
     if (p.diff && p.diff!=="All") list = list.filter(c=>c.difficulty.toLowerCase()===p.diff.toLowerCase());
+    if (p.status && p.status!=="All") list = list.filter(c=>c.status===p.status);
+    this._chalBase = list;
+
     const catChip = c => `<button class="filter ${(p.cat||"All")===c?"active":""}" onclick="App.go('/challenges?cat=${c}')">${c}</button>`;
     const diffChip = d => `<button class="filter ${(p.diff||"All")===d?"active":""}" onclick="App.go('/challenges?diff=${d}')">${d}</button>`;
+    const stChip = s => `<button class="filter ${(p.status||"All")===s?"active":""}" onclick="App.go('/challenges?status=${s}')">${s==="All"?s:stLabel[s]}</button>`;
+
+    const openCount = DB.challenges.filter(c=>c.status!=="completed").length;
     return `
-      <section class="page-head"><div class="container">
-        <span class="eyebrow">◆ Explore</span>
-        <h1 style="margin-top:14px">Challenges</h1>
-        <p>Pick a challenge, join, build, and ship something amazing.</p>
+      <section class="chal-hero"><div class="container">
+        <span class="eyebrow">The challenge arena</span>
+        <h1 style="margin-top:16px">Turn your skills into <span class="grad-text">real wins.</span></h1>
+        <p class="sub">A live board of judged challenges. Pick a track, build something real, get peer-reviewed, earn XP — and climb into the top 10.</p>
+        <div class="chal-toolbar">
+          <div class="search"><span>${ico("search",16)}</span><input id="chSearch" placeholder="Search challenges" oninput="App.quickSearch(this.value)"></div>
+          <select id="chSort" class="sort" onchange="App.quickSort()">
+            <option value="featured">Featured</option>
+            <option value="participants">Most popular</option>
+            <option value="reward">Biggest reward</option>
+            <option value="deadline">Ending soon</option>
+          </select>
+          <span class="chal-count">${openCount} live</span>
+        </div>
       </div></section>
       <section class="container">
-        <div class="filters">${cats.map(catChip).join("")}</div>
+        <div class="filters">${["All","open","ending","completed"].map(stChip).join("")}</div>
+        <div class="filters" style="margin-top:0">${cats.map(catChip).join("")}</div>
         <div class="filters" style="margin-top:0">${diffs.map(diffChip).join("")}</div>
-        <div class="grid grid-3" style="margin-top:10px">
-          ${list.length ? list.map((c,i)=>this.challengeCard(c,i)).join("") : this.emptyState("No challenges match this filter.", "search")}
-        </div>
+        <div class="grid grid-3" id="chGrid" style="margin-top:12px"></div>
       </section>`;
   },
+
+  drawGrid(){
+    const el = document.getElementById("chGrid");
+    if (!el) return;
+    const q = (document.getElementById("chSearch") ? document.getElementById("chSearch").value : "").trim().toLowerCase();
+    let list = (this._chalBase||[]).slice();
+    if (q) list = list.filter(c=>(c.title+" "+(c.blurb||"")+" "+c.category).toLowerCase().includes(q));
+    const sort = document.getElementById("chSort") ? document.getElementById("chSort").value : "featured";
+    if (sort==="participants") list.sort((a,b)=>b.participants-a.participants);
+    else if (sort==="reward") list.sort((a,b)=>b.reward-a.reward);
+    else if (sort==="deadline") list.sort((a,b)=>a.deadline-b.deadline);
+    else list.sort((a,b)=>(b.featured?1:0)-(a.featured?1:0));
+    el.innerHTML = list.length ? list.map((c,i)=>this.challengeCard(c,i)).join("") : this.emptyState("No challenges match your filters.","search");
+    el.querySelectorAll(".reveal").forEach(r=>r.classList.add("in"));
+  },
+
+  quickSearch(v){ this.drawGrid(); },
+  quickSort(){ this.drawGrid(); },
 
   emptyState(msg, ic="grid"){ return `<div class="empty" style="grid-column:1/-1"><div class="ico">${ico(ic,34)}</div><p>${esc(msg)}</p></div>`; },
 
