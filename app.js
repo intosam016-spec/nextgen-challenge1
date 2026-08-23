@@ -358,7 +358,7 @@ const App = {
                 <a class="btn btn-secondary btn-lg" href="#/signup">Join NextGen</a>
               </div>
               <div class="hero-note reveal">
-                <div>${ico("check",15)} 4,800+ creators</div>
+                <div>${ico("check",15)} 100+ creators</div>
                 <div>${ico("check",15)} 120+ challenges</div>
                 <div>${ico("check",15)} 6.2M XP awarded</div>
               </div>
