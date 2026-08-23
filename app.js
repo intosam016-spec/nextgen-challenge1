@@ -359,8 +359,8 @@ const App = {
               </div>
               <div class="hero-note reveal">
                 <div>${ico("check",15)} 100+ creators</div>
-                <div>${ico("check",15)} 120+ challenges</div>
-                <div>${ico("check",15)} 6.2M XP awarded</div>
+                <div>${ico("check",15)} 15+ challenges</div>
+                <div>${ico("check",15)} 250K XP awarded</div>
               </div>
             </div>
             ${this.heroPanel()}
