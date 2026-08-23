@@ -538,12 +538,16 @@ const App = {
   challengeCard(c, i){
     return `
       <article class="card chal-card reveal" style="transition-delay:${i*80}ms">
+        <div class="chal-cover cat-${esc(c.category).replace(/\s+/g,"-").toLowerCase()}">
+          <span class="chal-cover-ico">${ico(catIcon(c.category),26)}</span>
+          <span class="chal-cover-name">${esc(c.category)}</span>
+          ${c.reward?`<span class="chal-cover-xp">${ico("bolt",13)} ${c.reward} XP</span>`:""}
+        </div>
         <div class="chal-body">
           <div class="chal-top">
-            <span class="chal-icon">${ico(catIcon(c.category),20)}</span>
+            <h3 style="font-size:17px"><a href="#/challenge/${c.id}">${esc(c.title)}</a></h3>
             <div style="margin-left:auto">${this.statusChip(c)}</div>
           </div>
-          <h3><a href="#/challenge/${c.id}">${esc(c.title)}</a></h3>
           <div class="chal-tags">
             <span class="chip cat">${esc(c.category)}</span>
             ${this.diffChip(c.difficulty)}

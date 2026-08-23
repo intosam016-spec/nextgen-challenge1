@@ -237,6 +237,22 @@ h4 { font-size: 16px; }
 .chal-top { display: flex; align-items: center; gap: 10px; }
 .chal-icon { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, rgba(124,92,246,.30), rgba(236,72,153,.16)); border: 1px solid rgba(124,92,246,.30); display: grid; place-items: center; color: #cfc2ff; flex-shrink: 0; box-shadow: inset 0 1px 0 rgba(255,255,255,.06); }
 .chal-icon svg { width: 20px; height: 20px; }
+
+/* DoraHacks-style category cover banner */
+.chal-cover { position: relative; height: 96px; display: flex; align-items: center; gap: 12px; padding: 0 18px; overflow: hidden; border-bottom: 1px solid var(--border); }
+.chal-cover::after { content:""; position: absolute; inset: 0; background: radial-gradient(120% 160% at 90% -20%, rgba(255,255,255,.16), transparent 50%); }
+.chal-cover-ico { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.12); color: #fff; position: relative; box-shadow: inset 0 1px 0 rgba(255,255,255,.25); }
+.chal-cover-ico svg { width: 26px; height: 26px; }
+.chal-cover-name { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: #fff; position: relative; letter-spacing: .2px; }
+.chal-cover-xp { position: relative; margin-left: auto; display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: #fff; background: rgba(0,0,0,.22); padding: 5px 9px; border-radius: 999px; }
+.chal-cover-xp svg { width: 11px; height: 11px; }
+.chal-cover.cat-ai { background: linear-gradient(135deg,#7c3aed,#a855f7); }
+.chal-cover.cat-web-development { background: linear-gradient(135deg,#2563eb,#06b6d4); }
+.chal-cover.cat-automation { background: linear-gradient(135deg,#059669,#34d399); }
+.chal-cover.cat-design { background: linear-gradient(135deg,#ec4899,#ff9d6b); }
+.chal-cover.cat-web3 { background: linear-gradient(135deg,#4f46e5,#a855f7); }
+.chal-cover.cat-content-creation { background: linear-gradient(135deg,#d97706,#fb923c); }
+.chal-cover.cat-tech { background: linear-gradient(135deg,#475569,#94a3b8); }
 .chal-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .chal-desc { color: var(--muted); font-size: 13.5px; line-height: 1.5; flex: 1; }
 .chal-meta { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 12.5px; padding-top: 12px; border-top: 1px solid var(--hairline); }
