@@ -346,21 +346,22 @@ const App = {
         <div class="container">
           <div class="hero-grid">
             <div>
+              <div class="hero-pill reveal">${ico("flame",14)} <b>Live:</b> CREAO referral contest — $200 prize pool</div>
               <span class="eyebrow reveal">NextGen Academy</span>
               <h1 class="reveal" style="margin-top:16px">
                 <span class="line">Build.</span>
                 <span class="line grad-text">Compete.</span>
                 <span class="line">Create.</span>
               </h1>
-              <p class="sub reveal">Turn your ideas into real-world projects, compete in challenges, earn XP and build your reputation with NextGen.</p>
+              <p class="sub reveal">Ship real products with NextGen. Join a challenge, build something people actually use, and earn your place on the board — no shortcuts, just wins.</p>
               <div class="hero-cta reveal">
                 <a class="btn btn-primary btn-lg" href="#/challenges">${ico("compass",18)} Explore Challenges</a>
                 <a class="btn btn-secondary btn-lg" href="#/signup">Join NextGen</a>
               </div>
               <div class="hero-note reveal">
-                <div>${ico("check",15)} 100+ creators</div>
-                <div>${ico("check",15)} 15+ challenges</div>
-                <div>${ico("check",15)} 250K XP awarded</div>
+                <div class="hn"><b>100+</b><span>Creators</span></div>
+                <div class="hn"><b>15+</b><span>Challenges</span></div>
+                <div class="hn"><b>250K</b><span>XP awarded</span></div>
               </div>
             </div>
             ${this.heroPanel()}
@@ -559,7 +560,7 @@ const App = {
           <div class="community reveal">
             <span class="eyebrow center">Community</span>
             <h2 style="margin:16px auto 10px;max-width:640px">Build together. Learn together. <span class="grad-text">Grow together.</span></h2>
-            <p class="lead" style="max-width:520px;margin:0 auto 24px">Join thousands of builders sharing feedback, ideas, and wins every day.</p>
+            <p class="lead" style="max-width:520px;margin:0 auto 24px">The NEXTGEN crew hangs out here — live feedback, collabs and wins, every single week.</p>
             <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
               <a class="btn btn-primary btn-lg" href="#/signup">Join Community</a>
               <a class="btn btn-secondary btn-lg" href="#/community">Meet the builders ${ico("arrow",16)}</a>
@@ -822,7 +823,7 @@ const App = {
         <div class="community reveal">
           <span class="eyebrow">✦ Community</span>
           <h2 style="margin:16px auto 10px;max-width:640px">Build together. Learn together. <span class="grad-text">Grow together.</span></h2>
-          <p class="lead" style="max-width:540px;margin:0 auto 24px">Join thousands of builders sharing feedback, ideas, and wins every day.</p>
+          <p class="lead" style="max-width:540px;margin:0 auto 24px">Join the builders actually shipping — feedback, collabs and wins, every week.</p>
           <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
             <a class="btn btn-primary" href="#/signup">Join Community</a>
             <a class="btn btn-ghost" href="#/">Follow NextGen</a>
